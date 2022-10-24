@@ -2,6 +2,7 @@ package com.cydeo.bootstrap;
 
 import com.cydeo.entity.Region;
 import com.cydeo.repository.DepartmentRepository;
+import com.cydeo.repository.EmployeeRepository;
 import com.cydeo.repository.RegionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,10 +13,12 @@ import java.util.List;
 public class DataGenerator implements CommandLineRunner {
     private RegionRepository regionRepository;
     private DepartmentRepository departmentRepository;
+    private EmployeeRepository employeeRepository;
 
-    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository) {
+    public DataGenerator(RegionRepository regionRepository, DepartmentRepository departmentRepository, EmployeeRepository employeeRepository) {
         this.regionRepository = regionRepository;
         this.departmentRepository = departmentRepository;
+        this.employeeRepository = employeeRepository;
     }
 
     @Override
@@ -40,6 +43,14 @@ public class DataGenerator implements CommandLineRunner {
         System.out.println("findByDivisionIs: " + departmentRepository.findByDivisionIs("Outdoors"));
 
         System.out.println("findDistinctTop3ByDivisionContaining: " + departmentRepository.findDistinctTop3ByDivisionContaining("Hea"));
+
+        System.out.println("------------------ END --------------------");
+
+        System.out.println("------------------ START --------------------");
+
+        System.out.println("getEmployeeDetail: " + employeeRepository.getEmployeeDetail());
+
+        System.out.println("getEmployeeDetail: " + employeeRepository.getEmployeeDetail("sdubber7@t-online.de"));
 
         System.out.println("------------------ END --------------------");
     }
